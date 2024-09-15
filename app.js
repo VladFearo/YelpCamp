@@ -1,5 +1,16 @@
 const express = require('express');
 const path = require('path');
+const mongoose = require('mongoose');
+require('dotenv').config();
+
+const mongoUri = process.env.MONGO_URI;
+
+
+mongoose.connect(mongoUri)
+  .then(() => console.log('Connected to MongoDB YelpCamp'))
+  .catch((error) => console.error('Error connecting to MongoDB:', error));
+
+
 const app = express();
 
 app.set('view engine', 'ejs');
